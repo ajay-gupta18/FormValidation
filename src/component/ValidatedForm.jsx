@@ -10,17 +10,21 @@ function ValidatedForm() {
     const [error, setError] = useState({})
 
     const validate = () => {
+        const dataKey = ["name", "email", "city", "phone"];
         const newError = {};
-        if (!data.name) newError.name = "name is required"
-        if (!data.email) newError.email = "email is required"
-        if (!data.city) newError.city = "city is required"
-        if (!data.phone) {
-            newError.phone = "phone is required"
-        } else if (data.phone.length !== 10) {
-            newError.phone = "enter a valid phone number"
-        }
+        dataKey.forEach(item => {
+            if (!data[item]) {
+                newError[item] = `${item} is required`
+            }
+        })
         return newError
     }
+    // if (!data.name) newError.name = "name is required"
+    // if (!data.email) newError.email = "email is required"
+    // if (!data.city) newError.city = "city is required"
+    // if (!data.phone) {
+    //     newError.phone = "phone is required"
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,20 +32,25 @@ function ValidatedForm() {
         if (Object.keys(formError).length > 0) {
             setError(formError)
         } else {
-            alert(`1. name :${data.name},\n 
-            2. email : ${data.email},\n 
-            3. phone : ${data.phone},\n
-            4. city : ${data.city}`)
-        }
+            console.log(data)
+            let a = alert(`1. name :${data.name},\n 
+                2. email : ${data.email},\n 
+                3. phone : ${data.phone},\n
+                4. city : ${data.city}`)
+            }
+
+        setData({
+            name: "",
+            email: "",
+            phone: "",
+            city: ""
+        })
 
     }
     const handleChange = (e) => {
-        const { id, value } = e.target
-        setData(prevData => ({ ...prevData, [id]: value }))
-        if (id == "email") { setError({ ...error, [id]: " " }) }
-        else if (id == "name") { setError({ ...error, [id]: " " }) }
-        else if (id == "phone") { setError({ ...error, [id]: " " }) }
-        else { setError({ ...error, [id]: " " }) };
+        const { name, value } = e.target
+        setData(prevData => ({ ...prevData, [name]: value.trim() }))
+        setError(prevError => ({ ...prevError, [name]: "" }))
     }
 
 
@@ -54,33 +63,39 @@ function ValidatedForm() {
                     <input
                         type="text"
                         value={data.name}
+                        name='name'
                         id='name'
                         onChange={handleChange} />
-                    <p>{error.name && <span style={{ color: "red" }}>{error.name}</span>}</p>
+                    <p style={{ color: "red" }}>{error.name && error.name}</p>
                     <br />
                     <label htmlFor="email">Email : </label>
                     <input
                         type="email"
                         value={data.email}
+                        name='email'
                         id='email'
                         onChange={handleChange} />
-                    <p>{error.email && <span style={{ color: "red" }}>{error.email}</span>}</p>
+                    <p style={{ color: "red" }}>{error.email && error.email}</p>
                     <br />
                     <label htmlFor="city">City : </label>
                     <input
                         type="text"
                         value={data.city}
+                        name='city'
                         id='city'
                         onChange={handleChange} />
-                    <p>{error.city && <span style={{ color: "red" }}>{error.city}</span>}</p>
+                    <p style={{ color: "red" }}>{error.city && error.city}</p>
                     <br />
                     <label htmlFor="phone">Phone : </label>
                     <input
-                        type="number"
+                        type="tel"
+                        minLength={10}
+                        maxLength={10}
                         value={data.phone}
+                        name='phone'
                         id='phone'
                         onChange={handleChange} />
-                    <p>{error.phone && <span style={{ color: "red" }}>{error.phone}</span>}</p>
+                    <p style={{ color: "red" }}>{error.phone && error.phone}</p>
                     <br />
                     <button>Submit</button>
                 </form>
