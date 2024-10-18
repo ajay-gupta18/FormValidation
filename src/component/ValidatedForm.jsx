@@ -3,10 +3,12 @@ import './utils/ValidatedForm.css';
 
 function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, setEditIndex }) {
     const [data, setData] = useState({
-        name: "",
+        fname: "",
+        lname:"",
         email: "",
         phone: "",
-        city: ""
+        city: "",
+        gender:"",
     });
 
     const [error, setError] = useState({});
@@ -18,7 +20,7 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
     }, [editIndex, parentData]);
 
     const validate = () => {
-        const dataKey = ["name", "email", "city", "phone"];
+        const dataKey = ["fname","lname", "email", "city", "phone","gender"];
         const newError = {};
         dataKey.forEach(item => {
             if (!data[item]) {
@@ -39,6 +41,7 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(data)
         const formError = validate();
         if (Object.keys(formError).length > 0) {
             setError(formError);
@@ -63,59 +66,99 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData(prevData => ({ ...prevData, [name]: value.trim() }));
+        setData(prevData => ({ ...prevData, [gender]: value }));
         setError(prevError => ({ ...prevError, [name]: "" }));
     };
 
     return (
         <>
             <div className='form-container'>
-                <h1>User Form</h1>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="name">Name:</label>
-                    <input
-                        type="text"
-                        value={data.name}
-                        name='name'
-                        id='name'
-                        onChange={handleChange}
-                    />
-                    {error.name && <p className="error-message">{error.name}</p>}
+                    <div className='group-container'>
+                        <div className='input-field'>
+                            <label htmlFor="fname">First Name:</label>
+                            <input
+                                type="text"
+                                value={data.fname}
+                                name='fname'
+                                id='fname'
+                                onChange={handleChange}
+                            />
+                            {error.fname && <p className="error-message">{error.fname}</p>}
+                        </div>
+                        <div className='input-field'>
+                            <label htmlFor="lname">Last Name:</label>
+                            <input
+                                type="text"
+                                value={data.lname}
+                                name='lname'
+                                id='lname'
+                                onChange={handleChange}
+                            />
+                            {error.lname && <p className="error-message">{error.lname}</p>}
+                        </div>
 
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        value={data.email}
-                        name='email'
-                        id='email'
-                        onChange={handleChange}
-                    />
-                    {error.email && <p className="error-message">{error.email}</p>}
+                    </div>
+                    <div className='group-container'>
+                        <div className='input-field'>
+                            <label htmlFor="email">Email:</label>
+                            <input
+                                type="email"
+                                style={{textTransform:'lowercase'}}
+                                value={data.email}
+                                name='email'
+                                id='email'
+                                onChange={handleChange}
+                            />
+                            {error.email && <p className="error-message">{error.email}</p>}
+                        </div>
+                        <div className='input-field'>
 
-                    <label htmlFor="city">City:</label>
-                    <input
-                        type="text"
-                        value={data.city}
-                        name='city'
-                        id='city'
-                        onChange={handleChange}
-                    />
-                    {error.city && <p className="error-message">{error.city}</p>}
+                            <label htmlFor="city">City:</label>
+                            <input
+                                type="text"
+                                value={data.city}
+                                name='city'
+                                id='city'
+                                onChange={handleChange}
+                            />
+                            {error.city && <p className="error-message">{error.city}</p>}
+                        </div>
+                    </div>
 
-                    <label htmlFor="phone">Phone:</label>
-                    <input
-                        type="tel"
-                        minLength={10}
-                        maxLength={10}
-                        value={data.phone}
-                        name='phone'
-                        id='phone'
-                        onChange={handleChange}
-                    />
-                    {error.phone && <p className="error-message">{error.phone}</p>}
+                    <div className='group-container'>
+                        <div className='input-field'>
+                            <label htmlFor="phone">Phone:</label>
+                            <input
+                                type="tel"
+                                minLength={10}
+                                maxLength={10}
+                                value={data.phone}
+                                name='phone'
+                                id='phone'
+                                onChange={handleChange}
+                            />
+                            {error.phone && <p className="error-message">{error.phone}</p>
+                            }
+                        </div>
+                        <div className='input-field'>
+                            <label htmlFor="gender">Gender:</label>
+                           <select name="gender" id="gender" value={data.gender} onChange={handleChange}>
+                            <option value="">select</option>
+                            <option value='male'>Male</option>
+                            <option value='female'>Female</option>
+                           </select>
+                            {error.gender && <p className="error-message">{error.gender}</p>
+                            }
+                        </div>
+                        <button type="submit">{editIndex !== null ? "Update" : "Add"}</button>
 
-                    <button type="submit">{editIndex !== null ? "Update" : "Submit"}</button>
+                    </div>
+
+                    
                 </form>
             </div>
+          
 
         </>
     );

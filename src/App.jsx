@@ -13,15 +13,20 @@ function App() {
   }
   return (
     <>
-      <ValidatedForm
+     <div className="app-container">
+     <ValidatedForm
         parentData={parentData}
         setParentData={setParentData}
         setShowTable={setShowTable}
         editIndex={editIndex}
         setEditIndex={setEditIndex} />
+
+    <hr  className='hr-tag'/>
+
       {showTable && <DisplyData
         parentData={parentData}
         onEdit={handleEdit} />}
+     </div>
     </>
   );
 }
