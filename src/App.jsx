@@ -11,6 +11,9 @@ function App() {
   const handleEdit=(index)=>{
     setEditIndex(index);
   }
+  const handleDelete =(index) =>{
+    setParentData(parentData.filter((v, i) => i !== index));
+  }
   return (
     <>
      <div className="app-container">
@@ -25,7 +28,7 @@ function App() {
 
       {showTable && <DisplyData
         parentData={parentData}
-        onEdit={handleEdit} />}
+        onEdit={handleEdit} onDelete={handleDelete} />}
      </div>
     </>
   );

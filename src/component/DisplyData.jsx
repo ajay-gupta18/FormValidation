@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import './utils/DisplyData.css';
 import { FaRegEdit } from "react-icons/fa"
 import { MdDeleteOutline } from "react-icons/md";
-function DisplyData({ parentData,onEdit}) {
+function DisplyData({ parentData,onEdit,onDelete}) {
+
+const handleDelete=()=>{
+
+}
 
   return (
     <div className='table-div'>
@@ -16,7 +20,7 @@ function DisplyData({ parentData,onEdit}) {
             <th>City</th>
             <th>Phone</th>
             <th>Gender</th>
-            <th></th>
+            <th>Editer</th>
           </tr>
         </thead>
         <tbody>
@@ -29,8 +33,8 @@ function DisplyData({ parentData,onEdit}) {
               <td>{item.phone}</td>
               <td>{item.gender}</td>
               
-              <td className='button-group'><button onClick={()=>onEdit(index)}><FaRegEdit/></button>
-              <button ><MdDeleteOutline/></button></td>
+              <td className='button-group'><button className='icon' onClick={()=>onEdit(index)}><FaRegEdit/></button>
+              <button className='icon' onClick={()=>onDelete(index)}><MdDeleteOutline/></button></td>
             </tr>
           ))}
         </tbody>

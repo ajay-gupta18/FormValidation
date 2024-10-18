@@ -32,10 +32,12 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
 
     const resetForm = () => {
         setData({
-            name: "",
+            fname: "",
+            lname:"",
             email: "",
             phone: "",
-            city: ""
+            city: "",
+            gender:"",
         });
     }
 
