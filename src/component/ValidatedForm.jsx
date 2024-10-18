@@ -136,8 +136,7 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
                                 id='phone'
                                 onChange={handleChange}
                             />
-                            {error.phone && <p className="error-message">{error.phone}</p>
-                            }
+                            {error.phone && <p className="error-message">{error.phone}</p>}
                         </div>
                         <div className='input-field'>
                             <label htmlFor="gender">Gender:</label>
