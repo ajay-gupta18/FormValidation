@@ -67,15 +67,14 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setData(prevData => ({ ...prevData, [name]: value.trim() }));
-        setData(prevData => ({ ...prevData, [gender]: value }));
+        setData(prevData=>({...prevData,[name]:value}))
         setError(prevError => ({ ...prevError, [name]: "" }));
     };
 
     return (
         <>
             <div className='form-container'>
-                <form onSubmit={handleSubmit}>
+                <form  onSubmit={handleSubmit}>
                     <div className='group-container'>
                         <div className='input-field'>
                             <label htmlFor="fname">First Name:</label>
@@ -99,14 +98,10 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
                             />
                             {error.lname && <p className="error-message">{error.lname}</p>}
                         </div>
-
-                    </div>
-                    <div className='group-container'>
                         <div className='input-field'>
                             <label htmlFor="email">Email:</label>
                             <input
                                 type="email"
-                                style={{textTransform:'lowercase'}}
                                 value={data.email}
                                 name='email'
                                 id='email'
@@ -114,6 +109,10 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
                             />
                             {error.email && <p className="error-message">{error.email}</p>}
                         </div>
+
+                    </div>
+                    <div className='group-container'>
+                       
                         <div className='input-field'>
 
                             <label htmlFor="city">City:</label>
@@ -126,9 +125,6 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
                             />
                             {error.city && <p className="error-message">{error.city}</p>}
                         </div>
-                    </div>
-
-                    <div className='group-container'>
                         <div className='input-field'>
                             <label htmlFor="phone">Phone:</label>
                             <input
@@ -153,9 +149,9 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
                             {error.gender && <p className="error-message">{error.gender}</p>
                             }
                         </div>
-                        <button type="submit">{editIndex !== null ? "Update" : "Add"}</button>
 
                     </div>
+                        <div className='submit-btn'><button type="submit">{editIndex !== null ? "Update" : "Add"}</button></div>
 
                     
                 </form>

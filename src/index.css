@@ -66,4 +66,167 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+.form-container {
+  background: #ffffff;
+  margin-top: 5px !important;
+  padding: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 1px 5px 20px rgba(29, 23, 23, 0.13);
+  max-height: fit-content;
+  width: 95%;
+  margin: auto;
+  height: 30%;
+  /* Uncomment and use if needed */
+  /* max-width: 400px; */
+}
 
+.form-container label {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333131;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"],
+.form-container select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid rgb(156, 142, 142);
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="email"]:focus,
+.form-container input[type="tel"]:focus {
+  border-color: #646cff;
+  outline: none;
+}
+.submit-btn{
+  width: 95%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-container button {
+  width: 20%;
+  height: 30%; /* Ensure this is appropriate */
+  padding: 0.5rem;
+  background-color: #686b9e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+  background-color: #4f526e;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.group-container {
+  padding: 10px;
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.group-container div {
+  margin-left: 14px;
+  width: 30% !important;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+/* table css */
+.table-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  width: 100%;
+  background-color: white;
+  border: 1px solid black;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 5px 13px;
+  position: relative;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 10%;
+  text-align: center;
+  text-transform: capitalize;
+}
+.button-group {
+  width: 100%;
+  border: none;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.icon {
+  background-color: #686b9e;
+  width: 30%;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: large;
+}
+
+.icon:hover {
+  background-color: #57586e;
+  transition: background-color 1s;
+}
+
+/* app css */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.component-break {
+  width: 100%; /* Changed to 100% for full width */
+  color: black;
+}
+
+.hr-tag {
+  width: 100%;
+  font-size: larger;
+  height: 1px;
+  background: #ccc;
+  margin: 1.5rem 0;
+}

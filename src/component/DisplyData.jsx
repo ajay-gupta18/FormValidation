@@ -4,9 +4,6 @@ import { FaRegEdit } from "react-icons/fa"
 import { MdDeleteOutline } from "react-icons/md";
 function DisplyData({ parentData,onEdit,onDelete}) {
 
-const handleDelete=()=>{
-
-}
 
   return (
     <div className='table-div'>
