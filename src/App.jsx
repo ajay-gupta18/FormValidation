@@ -48,6 +48,8 @@ function App() {
   }
   ]);
   const [editIndex, setEditIndex] = useState(null);
+  const [sortColumn, setSortColumn] = useState(null);
+  const [sortOrder, setSortOrder] = useState('asc');
 
 
   const handleEdit = (index) => {
@@ -56,7 +58,29 @@ function App() {
   const handleDelete = (index) => {
     setParentData(parentData.filter((v, i) => i !== index));
   }
+  const handleSortAscending = (column) => {
+    const sortedData = [...parentData].sort((a, b) => {
+      if (a[column] < b[column]) return -1;
+      if (a[column] > b[column]) return 1;
+      return 0;
+    });
 
+    setSortColumn(column);
+    setSortOrder('asc');
+    setParentData(sortedData);
+  };
+
+  const handleSortDescending = (column) => {
+    const sortedData = [...parentData].sort((a, b) => {
+      if (a[column] < b[column]) return 1;
+      if (a[column] > b[column]) return -1;
+      return 0;
+    });
+
+    setSortColumn(column);
+    setSortOrder('desc');
+    setParentData(sortedData);
+  };
 
 
   return (
@@ -76,6 +100,8 @@ function App() {
           parentData={parentData}
           onEdit={handleEdit}
           onDelete={handleDelete}
+          onSortAsc={handleSortAscending}
+          onSortDesc = {handleSortDescending}
           
         />
       </div>

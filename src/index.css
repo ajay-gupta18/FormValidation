@@ -185,12 +185,23 @@ th, td {
   text-align: center;
   text-transform:none;
 }
+
 td .button-group{
   padding: .5rem;
   border:.2px solid rgba(83, 75, 75, 0.521);
   border-radius: 10%;
   text-align: center;
   text-transform:none;
+}
+.btn-span{
+  width: 30%;
+  background: whitesmoke;
+  border: 1px solid rgb(50, 47, 247);
+  border-radius: 5px;
+  padding: 5px;
+  color: rgb(50, 47, 247);
+  margin-left: 5px;
+
 }
 .button-group {
   display: flex;
@@ -204,11 +215,6 @@ td .button-group{
   border-radius: .6rem;
   font-size: large;
 }
-
-.icon:hover {
-  background-color: #57586e;
-  transition: background-color 1s;
-}
 header{
   width: 95%;
  
@@ -221,9 +227,13 @@ header{
 }
 .header-group input[type="text"]{
   padding: 0.3rem;
-  border: 1px solid #ddd;
+  border: .5px solid rgba(20, 20, 46, 0.253);
   border-bottom: 1px solid rgb(156, 142, 142);
   border-radius:5px ;
+}
+.header-group input[type="text"]:focus {
+  border-color: #646cff;
+  outline: none;
 }
 
 /* app css */

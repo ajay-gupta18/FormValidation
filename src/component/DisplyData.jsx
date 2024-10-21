@@ -2,46 +2,65 @@ import React, { useState } from 'react';
 import './utils/DisplyData.css';
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-import { CiSearch } from "react-icons/ci";
+import { FaSortAlphaDown } from "react-icons/fa";
+import { FaSortAlphaDownAlt } from "react-icons/fa";
 
-function DisplyData({ parentData, onEdit, onDelete }) {
+function DisplyData({ parentData, onEdit, onDelete, onSortAsc, onSortDesc }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredData = parentData.filter(item =>
     `${item.fname} ${item.lname}`.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value)
+  }
+  const handleSort = (item) => {
+    onSort(item)
+  }
   return (
     <div className='table-div'>
       <header className='header-group'>
         <h1>Data List</h1>
         <span>
-          <input 
-            type="text" 
-            name="search" 
-            id="search" 
-            placeholder='search' 
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder='search'
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)} 
+            onChange={handleSearch}
           />
-        </span>  
+        </span>
       </header>
       <table>
         <thead>
-          <tr>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>City</th>
+          <tr >
+            <th >
+              Full Name
+              <span className='btn-span' onClick={() => { onSortAsc('fname') }}><FaSortAlphaDown /></span>
+              <span className='btn-span' onClick={() => { onSortDesc('fname') }}><FaSortAlphaDownAlt /></span>
+            </th>
+            <th onClick={() => { onSort('email') }}>
+              <span>Email</span>
+              <span className='btn-span' onClick={() => { onSortAsc('email') }}><FaSortAlphaDown /></span>
+              <span className='btn-span' onClick={() => { onSortDesc('email') }}><FaSortAlphaDownAlt /></span>
+            </th>
+            <th>
+              City
+            <span className='btn-span' onClick={() => { onSortAsc('city') }}><FaSortAlphaDown /></span>
+            <span className='btn-span' onClick={() => { onSortDesc('city') }}><FaSortAlphaDownAlt /></span>
+            </th>
             <th>Phone</th>
             <th>Gender</th>
-            <th>Editer</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {filteredData!==""?filteredData.map((item, index) => (
+          {filteredData && filteredData.map((item, index) => (
             <tr key={index}>
-              <td>{`${item.fname} ${item.lname}`}</td>
-              <td>{item.email}</td>
+              <td >{`${item.fname} ${item.lname}`}</td>
+              <td >{item.email}</td>
               <td>{item.city}</td>
               <td>{item.phone}</td>
               <td>{item.gender}</td>
@@ -50,7 +69,7 @@ function DisplyData({ parentData, onEdit, onDelete }) {
                 <button className='icon' onClick={() => onDelete(index)}><MdDeleteOutline /></button>
               </td>
             </tr>
-          )):null}
+          ))}
         </tbody>
       </table>
     </div>
