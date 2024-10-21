@@ -49,7 +49,7 @@ function App() {
   ]);
   const [editIndex, setEditIndex] = useState(null);
   const [sortColumn, setSortColumn] = useState(null);
-  const [sortOrder, setSortOrder] = useState('asc');
+  const [sortOrder, setSortOrder] = useState('');
 
 
   const handleEdit = (index) => {
