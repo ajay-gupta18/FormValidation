@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './utils/ValidatedForm.css';
 
-function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, setEditIndex }) {
+function ValidatedForm({ setParentData,parentData, editIndex, setEditIndex }) {
     const [data, setData] = useState({
         fname: "",
         lname: "",
@@ -57,7 +57,6 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
                 resetForm();
             } else {
                 setParentData(prevData => ([...prevData, data]));
-                setShowTable(true);
                 resetForm();
             }
         }

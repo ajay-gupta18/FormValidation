@@ -4,8 +4,49 @@ import DisplyData from './component/DisplyData';
 import ValidatedForm from './component/ValidatedForm';
 
 function App() {
-  const [showTable, setShowTable] = useState(false);
-  const [parentData, setParentData] = useState([]);
+  const [showTable, setShowTable] = useState(true);
+  const [parentData, setParentData] = useState([
+    {
+      fname: "Peter",
+      lname: "Parker", // Spider-Man
+      email: "peter.parker@marvel.com",
+      phone: "+1-555-0123",
+      city: "New York",
+      gender: "Male"
+  },
+  {
+      fname: "Wanda",
+      lname: "Maximoff", // Scarlet Witch
+      email: "wanda.maximoff@marvel.com",
+      phone: "+1-555-4567",
+      city: "WandaVision",
+      gender: "Female"
+  },
+  {
+      fname: "Raj",
+      lname: "Chaudhary", // Indian hacker
+      email: "raj.chaudhary@example.com",
+      phone: "+91-9999999999",
+      city: "Delhi",
+      gender: "Male"
+  },
+  {
+      fname: "Sreeram",
+      lname: "Nair", // Indian software developer
+      email: "sreeram.nair@example.com",
+      phone: "+91-8888888888",
+      city: "Bengaluru",
+      gender: "Male"
+  },
+  {
+      fname: "Aisha",
+      lname: "Khan", // Random name
+      email: "aisha.khan@example.com",
+      phone: "+91-7777777777",
+      city: "Mumbai",
+      gender: "Female"
+  }
+  ]);
   const [editIndex, setEditIndex] = useState(null);
 
 
@@ -25,19 +66,18 @@ function App() {
         <ValidatedForm
           parentData={parentData}
           setParentData={setParentData}
-          setShowTable={setShowTable}
           editIndex={editIndex}
           setEditIndex={setEditIndex} />
   
 
         <div className='hr-tag'><hr  /></div>
 
-        {showTable && <DisplyData
+        <DisplyData
           parentData={parentData}
           onEdit={handleEdit}
           onDelete={handleDelete}
           
-        />}
+        />
       </div>
     </>
   );

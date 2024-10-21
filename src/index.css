@@ -171,9 +171,7 @@ button:focus-visible {
 
 table {
   width: 100%;
-  background-color: rgba(255, 255, 255, 0);
-  /* border: .5px solid rgba(0, 0, 0, 0.219); */
-  border-collapse: collapse;
+  background-color: rgb(255, 255, 255);
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 1px 5px 20px rgba(37, 28, 28, 0.267);
@@ -181,27 +179,29 @@ table {
 }
 
 th, td {
-  padding: 10px;
-  border: .5px solid rgba(0, 0, 0, 0.336);
+  padding: .5rem;
+  border:.2px solid rgba(83, 75, 75, 0.336);
+  border-radius: 10%;
+  text-align: center;
+  text-transform:none;
+}
+td .button-group{
+  padding: .5rem;
+  border:.2px solid rgba(83, 75, 75, 0.521);
   border-radius: 10%;
   text-align: center;
   text-transform:none;
 }
 .button-group {
-  width: 100%;
-  border: none;
   display: flex;
   justify-content: space-evenly;
-  text-align: center;
-  margin-right: 10px;
 }
 
 .icon {
   background: linear-gradient(to right, #9933ff 36%, #6666ff 82%);
-  width: 30%;
+  width: 40%;
   color: white;
-  border: none;
-  border-radius: 10px;
+  border-radius: .6rem;
   font-size: large;
 }
 
