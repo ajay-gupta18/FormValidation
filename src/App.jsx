@@ -8,28 +8,37 @@ function App() {
   const [parentData, setParentData] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
 
-  const handleEdit=(index)=>{
+
+  const handleEdit = (index) => {
     setEditIndex(index);
   }
-  const handleDelete =(index) =>{
+  const handleDelete = (index) => {
     setParentData(parentData.filter((v, i) => i !== index));
   }
+
+
+
   return (
     <>
-     <div className="app-container">
-     <ValidatedForm
-        parentData={parentData}
-        setParentData={setParentData}
-        setShowTable={setShowTable}
-        editIndex={editIndex}
-        setEditIndex={setEditIndex} />
+      <div className="app-container">
+       
+        <ValidatedForm
+          parentData={parentData}
+          setParentData={setParentData}
+          setShowTable={setShowTable}
+          editIndex={editIndex}
+          setEditIndex={setEditIndex} />
+  
 
-    <hr  className='hr-tag'/>
+        <div className='hr-tag'><hr  /></div>
 
-      {showTable && <DisplyData
-        parentData={parentData}
-        onEdit={handleEdit} onDelete={handleDelete} />}
-     </div>
+        {showTable && <DisplyData
+          parentData={parentData}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+          
+        />}
+      </div>
     </>
   );
 }

@@ -4,11 +4,11 @@ import './utils/ValidatedForm.css';
 function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, setEditIndex }) {
     const [data, setData] = useState({
         fname: "",
-        lname:"",
+        lname: "",
         email: "",
         phone: "",
         city: "",
-        gender:"",
+        gender: "",
     });
 
     const [error, setError] = useState({});
@@ -20,7 +20,7 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
     }, [editIndex, parentData]);
 
     const validate = () => {
-        const dataKey = ["fname","lname", "email", "city", "phone","gender"];
+        const dataKey = ["fname", "lname", "email", "city", "phone", "gender"];
         const newError = {};
         dataKey.forEach(item => {
             if (!data[item]) {
@@ -33,17 +33,16 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
     const resetForm = () => {
         setData({
             fname: "",
-            lname:"",
+            lname: "",
             email: "",
             phone: "",
             city: "",
-            gender:"",
+            gender: "",
         });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data)
         const formError = validate();
         if (Object.keys(formError).length > 0) {
             setError(formError);
@@ -55,26 +54,32 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
                     return newData;
                 });
                 setEditIndex(null);
-                resetForm()
-
+                resetForm();
             } else {
                 setParentData(prevData => ([...prevData, data]));
                 setShowTable(true);
-                resetForm()
+                resetForm();
             }
         }
     };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setData(prevData=>({...prevData,[name]:value}))
+        setData(prevData => {
+            let newValue = value;
+            if (name === "fname" || name === "lname" || name === "city") {
+                newValue = value.charAt(0).toUpperCase() + value.slice(1);
+            }
+            const updatedData = { ...prevData, [name]: newValue };
+            return updatedData;
+        });
         setError(prevError => ({ ...prevError, [name]: "" }));
     };
 
     return (
         <>
             <div className='form-container'>
-                <form  onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className='group-container'>
                         <div className='input-field'>
                             <label htmlFor="fname">First Name:</label>
@@ -109,12 +114,9 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
                             />
                             {error.email && <p className="error-message">{error.email}</p>}
                         </div>
-
                     </div>
                     <div className='group-container'>
-                       
                         <div className='input-field'>
-
                             <label htmlFor="city">City:</label>
                             <input
                                 type="text"
@@ -140,23 +142,17 @@ function ValidatedForm({ setParentData, setShowTable, parentData, editIndex, set
                         </div>
                         <div className='input-field'>
                             <label htmlFor="gender">Gender:</label>
-                           <select name="gender" id="gender" value={data.gender} onChange={handleChange}>
-                            <option value="">select</option>
-                            <option value='male'>Male</option>
-                            <option value='female'>Female</option>
-                           </select>
-                            {error.gender && <p className="error-message">{error.gender}</p>
-                            }
+                            <select name="gender" id="gender" value={data.gender} onChange={handleChange}>
+                                <option value="">Select</option>
+                                <option value='Male'>Male</option>
+                                <option value='Female'>Female</option>
+                            </select>
+                            {error.gender && <p className="error-message">{error.gender}</p>}
                         </div>
-
                     </div>
-                        <div className='submit-btn'><button type="submit">{editIndex !== null ? "Update" : "Add"}</button></div>
-
-                    
+                    <div className='submit-btn'><button type="submit">{editIndex !== null ? "Update" : "Add"}</button></div>
                 </form>
             </div>
-          
-
         </>
     );
 }
