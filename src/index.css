@@ -113,6 +113,7 @@ button:focus-visible {
   justify-content: center;
 }
 
+
 .form-container button {
   width: 20%;
   height: 30%;
@@ -127,7 +128,9 @@ button:focus-visible {
 }
 
 .form-container button:hover {
-  background-color: #4f526e;
+  background: linear-gradient(to right, #48489b 36%,  #502d72 82% );
+  box-shadow: 1px 5px 20px rgba(37, 28, 28, 0.267);
+  transform: scale(1.02);
 }
 
 .error-message {
@@ -194,7 +197,7 @@ td .button-group{
   text-transform:none;
 }
 .btn-span{
-  width: 30%;
+  width: 20%;
   background: whitesmoke;
   border: 1px solid rgb(50, 47, 247);
   border-radius: 5px;
@@ -203,17 +206,27 @@ td .button-group{
   margin-left: 5px;
 
 }
+.btn-span button{
+  width: 5%;
+}
 .button-group {
   display: flex;
   justify-content: space-evenly;
 }
 
-.icon {
+ .icon {
   background: linear-gradient(to right, #9933ff 36%, #6666ff 82%);
   width: 40%;
   color: white;
   border-radius: .6rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   font-size: large;
+}
+.icon:hover{
+background: linear-gradient(to right, #48489b 36%,  #502d72 82% );
+transition: background 2s;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+transform: scale(1.1);
 }
 header{
   width: 95%;

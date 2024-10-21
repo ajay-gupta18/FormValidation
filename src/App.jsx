@@ -67,7 +67,7 @@ function App() {
 
     setSortColumn(column);
     setSortOrder('asc');
-    setParentData(sortedData);
+    setParentData(sortedData); 
   };
 
   const handleSortDescending = (column) => {

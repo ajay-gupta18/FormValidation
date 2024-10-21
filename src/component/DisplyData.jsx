@@ -4,6 +4,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaSortAlphaDown } from "react-icons/fa";
 import { FaSortAlphaDownAlt } from "react-icons/fa";
+import Btngroup from './subComponents/Btngroup';
 
 function DisplyData({ parentData, onEdit, onDelete, onSortAsc, onSortDesc }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -14,9 +15,6 @@ function DisplyData({ parentData, onEdit, onDelete, onSortAsc, onSortDesc }) {
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value)
-  }
-  const handleSort = (item) => {
-    onSort(item)
   }
   return (
     <div className='table-div'>
@@ -38,21 +36,20 @@ function DisplyData({ parentData, onEdit, onDelete, onSortAsc, onSortDesc }) {
           <tr >
             <th >
               Full Name
-              <span className='btn-span' onClick={() => { onSortAsc('fname') }}><FaSortAlphaDown /></span>
-              <span className='btn-span' onClick={() => { onSortDesc('fname') }}><FaSortAlphaDownAlt /></span>
+              <Btngroup onSortAsc={onSortAsc} onSortDesc={onSortDesc} column='fname'/>
             </th>
-            <th onClick={() => { onSort('email') }}>
+            <th>
               <span>Email</span>
-              <span className='btn-span' onClick={() => { onSortAsc('email') }}><FaSortAlphaDown /></span>
-              <span className='btn-span' onClick={() => { onSortDesc('email') }}><FaSortAlphaDownAlt /></span>
+              <Btngroup onSortAsc={onSortAsc} onSortDesc={onSortDesc} column='email' />
             </th>
             <th>
               City
-            <span className='btn-span' onClick={() => { onSortAsc('city') }}><FaSortAlphaDown /></span>
-            <span className='btn-span' onClick={() => { onSortDesc('city') }}><FaSortAlphaDownAlt /></span>
+              <Btngroup onSortAsc={onSortAsc} onSortDesc={onSortDesc} column='city'/>
             </th>
             <th>Phone</th>
-            <th>Gender</th>
+            <th>Gender
+            <Btngroup onSortAsc={onSortAsc} onSortDesc={onSortDesc} column='gender'/>
+            </th>
             <th>Actions</th>
           </tr>
         </thead>
