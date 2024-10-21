@@ -180,6 +180,10 @@ table {
   box-shadow: 1px 5px 20px rgba(37, 28, 28, 0.267);
   position: relative;
 }
+th{
+  padding: .9rem !important;
+  background-color: rgba(224, 224, 224, 0.932);
+}
 
 th, td {
   padding: .5rem;
@@ -199,16 +203,23 @@ td .button-group{
 .btn-span{
   width: 20%;
   background: whitesmoke;
-  border: 1px solid rgb(50, 47, 247);
+  border: 1px solid rgba(50, 47, 247, 0.363);
   border-radius: 5px;
-  padding: 5px;
-  color: rgb(50, 47, 247);
+  padding: 3px;
+  color: rgba(50, 47, 247, 0.699);
   margin-left: 5px;
 
 }
 .btn-span button{
   width: 5%;
 }
+.btn-span:hover{
+  border: 1px solid rgb(97, 96, 156);
+  color: rgb(97, 96, 156);
+  transition: color 1s;
+  transform: scale(1.1);
+}
+
 .button-group {
   display: flex;
   justify-content: space-evenly;
@@ -217,7 +228,7 @@ td .button-group{
  .icon {
   background: linear-gradient(to right, #9933ff 36%, #6666ff 82%);
   width: 40%;
-  color: white;
+  color: rgba(255, 255, 255, 0.671);
   border-radius: .6rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   font-size: large;
@@ -225,6 +236,7 @@ td .button-group{
 .icon:hover{
 background: linear-gradient(to right, #48489b 36%,  #502d72 82% );
 transition: background 2s;
+color: rgba(255, 255, 255, 0.9);
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 transform: scale(1.1);
 }

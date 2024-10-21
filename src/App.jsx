@@ -23,8 +23,8 @@ function App() {
       gender: "Female"
   },
   {
-      fname: "Raj",
-      lname: "Chaudhary", // Indian hacker
+      fname: "Ankit",
+      lname: "Fadla", // Indian hacker
       email: "raj.chaudhary@example.com",
       phone: "+91-9999999999",
       city: "Delhi",
