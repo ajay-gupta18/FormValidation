@@ -8,6 +8,9 @@ import Btngroup from './subComponents/Btngroup';
 
 function DisplyData({ parentData, onEdit, onDelete, onSortAsc, onSortDesc }) {
   const [searchQuery, setSearchQuery] = useState('');
+  //pagination state 
+  const [currentPage,setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   const filteredData = parentData.filter(item =>
     `${item.fname} ${item.lname}`.toLowerCase().includes(searchQuery.toLowerCase())
@@ -15,6 +18,19 @@ function DisplyData({ parentData, onEdit, onDelete, onSortAsc, onSortDesc }) {
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value)
+  }
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredData.slice(indexOfFirstItem,indexOfLastItem);
+
+  const pageNumber= [];
+  for (let i = 1; i <= Math.ceil(filteredData.length / itemsPerPage); i++) {
+    pageNumber.push(i);
+  }
+
+  const handleClick = (event) => {
+    setCurrentPage(Number(event.target.id));
   }
   return (
     <div className='table-div'>
@@ -54,7 +70,7 @@ function DisplyData({ parentData, onEdit, onDelete, onSortAsc, onSortDesc }) {
           </tr>
         </thead>
         <tbody>
-          {filteredData && filteredData.map((item, index) => (
+          {currentItems && currentItems.map((item, index) => (
             <tr key={index}>
               <td >{`${item.fname} ${item.lname}`}</td>
               <td >{item.email}</td>
@@ -69,6 +85,18 @@ function DisplyData({ parentData, onEdit, onDelete, onSortAsc, onSortDesc }) {
           ))}
         </tbody>
       </table>
+      <div className="pagination">
+        {pageNumber.map(number => (
+          <span
+            key={number}
+            id={number}
+            onClick={handleClick}
+            className={currentPage === number ? 'active' : null}
+          >
+            {number}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
